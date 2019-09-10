@@ -1,4 +1,4 @@
-ORG=integreatly
+ORG=orangesys
 NAMESPACE=grafana
 PROJECT=grafana-operator
 REG=quay.io
@@ -40,11 +40,11 @@ code/fix:
 
 .PHONY: image/build
 image/build: code/compile
-	@operator-sdk build ${REG}/${ORG}/${PROJECT}:${TAG}
+	@operator-sdk build ${ORG}/${PROJECT}:${TAG}
 
 .PHONY: image/push
 image/push:
-	docker push ${REG}/${ORG}/${PROJECT}:${TAG}
+	docker push ${ORG}/${PROJECT}:${TAG}
 
 .PHONY: image/build/push
 image/build/push: image/build image/push
