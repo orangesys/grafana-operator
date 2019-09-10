@@ -21,4 +21,4 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             make image/build TAG=$(git rev-parse --short HEAD)
             docker images
-            make image/push
+            make image/push TAG=$(git rev-parse --short HEAD)
