@@ -17,8 +17,8 @@ spec:
         - name: grafana-operator
           image: quay.io/integreatly/grafana-operator:latest
           args:
-            - '--grafana-image=quay.io/openshift/origin-grafana'
-            - '--grafana-image-tag=4.2'
+            - '--grafana-image=orangesys/alpine-grafana'
+            - '--grafana-image-tag=v6.3.5'
           ports:
           - containerPort: 60000
             name: metrics
@@ -37,9 +37,7 @@ spec:
             - name: TEMPLATE_PATH
               value: /usr/local/bin/templates
             - name: WATCH_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
+              value: ""
             - name: POD_NAME
               valueFrom:
                 fieldRef:

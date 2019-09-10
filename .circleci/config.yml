@@ -1,0 +1,22 @@
+default: &default
+  docker:
+    - image: circleci/golang:1.11
+  working_directory: /go/src/github.com/integr8ly/grafana-operator
+
+version: 2
+
+jobs:
+  build:
+    <<: *default
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - gopkg-v1-{{ checksum "Gopkg.lock" }}
+      - run: make setup/dep setup/travis code/check test/unit
+      - run: 
+          name: build docker image
+          command: |
+            make image/build TAG=$(git rev-parse --short HEAD)
+            docker images

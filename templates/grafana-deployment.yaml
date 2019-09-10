@@ -38,8 +38,6 @@ spec:
               name: grafana-plugins
       containers:
         - image: '{{ .GrafanaImage }}:{{ .GrafanaVersion }}'
-          args:
-            - -config=/etc/grafana/grafana.ini
           imagePullPolicy: IfNotPresent
           name: grafana
           ports:
