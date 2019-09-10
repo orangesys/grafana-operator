@@ -15,7 +15,7 @@ spec:
       serviceAccountName: grafana-operator
       containers:
         - name: grafana-operator
-          image: quay.io/integreatly/grafana-operator:latest
+          image: orangesys/grafana-operator:c75e5ba
           args:
             - '--grafana-image=orangesys/alpine-grafana'
             - '--grafana-image-tag=v6.3.5'
